@@ -179,11 +179,19 @@ extension QuickTableViewCollection: QuickTableViewCollectionProtocol {
     }
     
     public func headerType(at section: Int) -> QuickTableViewHeaderProtocol.Type? {
-        sections[safe: section]?.header?.getType()
+        guard let model = sections[safe: section]?.header else {
+            return nil
+        }
+        
+        return type(of: model).type
     }
     
     public func footerType(at section: Int) -> QuickTableViewHeaderProtocol.Type? {
-        sections[safe: section]?.footer?.getType()
+        guard let model = sections[safe: section]?.footer else {
+            return nil
+        }
+        
+        return type(of: model).type
     }
     
     public func header(at section: Int) -> QuickTableViewHeaderModelProtocol? {

@@ -6,5 +6,5 @@ import UIKit
 
 public protocol QuickTableViewHeaderModelProtocol: AnyObject {
     
-    func getType() -> QuickTableViewHeaderProtocol.Type
+    static var type: QuickTableViewHeaderProtocol.Type { get }
 }
