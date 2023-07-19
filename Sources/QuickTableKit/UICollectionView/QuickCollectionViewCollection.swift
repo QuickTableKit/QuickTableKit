@@ -140,3 +140,63 @@ public final class QuickCollectionViewCollection {
         indexes = sectionIds.reduce(into: [String: Int](), { $0[$1.element ?? ""] = $1.offset })
     }
 }
+
+extension QuickCollectionViewCollection {
+    
+    public func numberOfSections() -> Int {
+        return sections.count
+    }
+    
+    public func numberOfItems(in section: Int) -> Int {
+        return sections[safe: section]?.items.count ?? 0
+    }
+    
+    public func cellType(at indexPath: IndexPath) -> QuickCollectionViewCellProtocol.Type? {
+        guard let item = sections[safe: indexPath.section]?.items[safe: indexPath.row] else {
+            return nil
+        }
+        
+        return type(of: item).type
+    }
+    
+    public func cellId<CellId: RawRepresentable>(at indexPath: IndexPath) -> CellId? where CellId.RawValue == Int {
+        guard let value = sections[safe: indexPath.section]?.items[safe: indexPath.row]?.id else {
+            return nil
+        }
+        
+        return CellId(rawValue: value)
+    }
+    
+    public func sectionId<SectionId: RawRepresentable>(at section: Int) -> SectionId? where SectionId.RawValue == Int {
+        guard let value = sections[safe: section]?.id else {
+            return nil
+        }
+        
+        return SectionId(rawValue: value)
+    }
+    
+    public func cell(at indexPath: IndexPath) -> QuickCollectionViewCellModelProtocol? {
+        guard let sectionModel = sections[safe: indexPath.section],
+              let cellModel = sectionModel.items[safe: indexPath.row] else {
+            return nil
+        }
+        
+        return cellModel
+    }
+    
+    public func identifier<SectionId>(forSection sectionIndex: Int) -> SectionId? where SectionId: RawRepresentable, SectionId.RawValue == Int {
+        guard let identifierValue = sections[safe: sectionIndex]?.id else {
+            return nil
+        }
+        
+        return SectionId(rawValue: identifierValue)
+    }
+    
+    public func identifier<CellId>(for indexPath: IndexPath) -> CellId? where CellId: RawRepresentable, CellId.RawValue == Int {
+        guard let identifierValue = sections[safe: indexPath.section]?.items[safe: indexPath.row]?.id else {
+            return nil
+        }
+        
+        return CellId(rawValue: identifierValue)
+    }
+}
