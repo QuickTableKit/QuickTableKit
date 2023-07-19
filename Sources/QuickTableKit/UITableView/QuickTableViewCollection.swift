@@ -125,9 +125,7 @@ public final class QuickTableViewCollection {
     }
 }
 
-// MARK: QuickTableViewCollectionProtocol
-
-extension QuickTableViewCollection: QuickTableViewCollectionProtocol {
+extension QuickTableViewCollection {
     
     public func numberOfSections() -> Int {
         sections.count
@@ -178,7 +176,7 @@ extension QuickTableViewCollection: QuickTableViewCollectionProtocol {
         sections[safe: section]?.footer != nil
     }
     
-    public func headerType(at section: Int) -> QuickTableViewHeaderProtocol.Type? {
+    public func headerType(at section: Int) -> QuickTableViewHeaderFooterViewProtocol.Type? {
         guard let model = sections[safe: section]?.header else {
             return nil
         }
@@ -186,7 +184,7 @@ extension QuickTableViewCollection: QuickTableViewCollectionProtocol {
         return type(of: model).type
     }
     
-    public func footerType(at section: Int) -> QuickTableViewHeaderProtocol.Type? {
+    public func footerType(at section: Int) -> QuickTableViewHeaderFooterViewProtocol.Type? {
         guard let model = sections[safe: section]?.footer else {
             return nil
         }
@@ -194,7 +192,7 @@ extension QuickTableViewCollection: QuickTableViewCollectionProtocol {
         return type(of: model).type
     }
     
-    public func header(at section: Int) -> QuickTableViewHeaderModelProtocol? {
+    public func header(at section: Int) -> QuickTableViewHeaderFooterModelProtocol? {
         guard let sectionModel = sections[safe: section] else {
             return nil
         }
@@ -202,7 +200,7 @@ extension QuickTableViewCollection: QuickTableViewCollectionProtocol {
         return sectionModel.header
     }
     
-    public func footer(at section: Int) -> QuickTableViewHeaderModelProtocol? {
+    public func footer(at section: Int) -> QuickTableViewHeaderFooterModelProtocol? {
         guard let sectionModel = sections[safe: section] else {
             return nil
         }

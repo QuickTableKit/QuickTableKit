@@ -10,8 +10,8 @@ public final class QuickTableViewSection {
     
     public private(set) var id: Int?
     public private(set) var entity: IdentifiableEntity?
-    public var header: QuickTableViewHeaderModelProtocol?
-    public var footer: QuickTableViewHeaderModelProtocol?
+    public var header: QuickTableViewHeaderFooterModelProtocol?
+    public var footer: QuickTableViewHeaderFooterModelProtocol?
     public private(set) var items: [QuickTableViewCellModelProtocol] {
         didSet {
             recalculateIndexes()
@@ -20,8 +20,8 @@ public final class QuickTableViewSection {
     
     public init(id: Int? = nil,
                 entity: IdentifiableEntity? = nil,
-                header: QuickTableViewHeaderModelProtocol? = nil,
-                footer: QuickTableViewHeaderModelProtocol? = nil,
+                header: QuickTableViewHeaderFooterModelProtocol? = nil,
+                footer: QuickTableViewHeaderFooterModelProtocol? = nil,
                 items: [QuickTableViewCellModelProtocol] = []) {
         self.id = id
         self.entity = entity

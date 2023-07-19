@@ -6,17 +6,17 @@ import UIKit
 
 public class QuickTableViewDataSource: NSObject, UITableViewDataSource {
     
-    public private(set) var collection: QuickTableViewCollectionProtocol?
+    public private(set) var collection: QuickTableViewCollection?
     
     public override init() {
         collection = nil
     }
     
-    public init(collection: QuickTableViewCollectionProtocol) {
+    public init(collection: QuickTableViewCollection) {
         self.collection = collection
     }
     
-    public func update(collection: QuickTableViewCollectionProtocol) {
+    public func update(collection: QuickTableViewCollection) {
         self.collection = collection
     }
     
@@ -42,7 +42,7 @@ public class QuickTableViewDataSource: NSObject, UITableViewDataSource {
     
     public func dequeue(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UITableViewHeaderFooterView {
         guard let headerType = collection?.headerType(at: section),
-              let header = tableView.dequeue(headerFooterType: headerType) as? QuickTableViewHeaderProtocol,
+              let header = tableView.dequeue(headerFooterType: headerType) as? QuickTableViewHeaderFooterViewProtocol,
               let headerModel = collection?.header(at: section) else {
             fatalError("Header cannot be dequeue")
         }
@@ -53,7 +53,7 @@ public class QuickTableViewDataSource: NSObject, UITableViewDataSource {
     
     public func dequeue(_ tableView: UITableView, viewForFooterInSection section: Int) -> UITableViewHeaderFooterView {
         guard let footerType = collection?.footerType(at: section),
-              let footer = tableView.dequeue(headerFooterType: footerType) as? QuickTableViewHeaderProtocol,
+              let footer = tableView.dequeue(headerFooterType: footerType) as? QuickTableViewHeaderFooterViewProtocol,
               let footerModel = collection?.footer(at: section) else {
             fatalError("Header cannot be dequeue")
         }
