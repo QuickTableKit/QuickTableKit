@@ -1,5 +1,5 @@
 //
-// Copyright © 2023 ___ORGANIZATIONNAME___. All rights reserved.
+// Copyright © 2023 QuickTableKit. All rights reserved.
 //
 
 import UIKit
