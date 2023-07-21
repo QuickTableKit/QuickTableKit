@@ -45,10 +45,10 @@ extension QuickTableViewCollection {
             isPreviousInputEnabled: isPreviousInputEnabled,
             isNextInputEnabled: isNextInputEnabled
         )
-        cellModel.QuickRespondableConfig = config
+        cellModel.respondableConfig = config
         
         if let cell = tableView.cellForRow(at: indexPath) as? QuickRespondableTableViewCellProtocol {
-            cell.update(QuickRespondableConfig: config)
+            cell.update(respondableConfig: config)
         }
     }
 }

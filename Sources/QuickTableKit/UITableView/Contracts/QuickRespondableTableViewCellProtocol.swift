@@ -18,15 +18,15 @@ public struct QuickRespondableConfig {
 
 public protocol QuickRespondableTableViewCellModelProtocol: AnyObject {
     
-    var QuickRespondableConfig: QuickRespondableConfig? { get set }
+    var respondableConfig: QuickRespondableConfig? { get set }
 }
 
 public protocol QuickRespondableTableViewCellProtocol: AnyObject {
     
-    func update(QuickRespondableConfig: QuickRespondableConfig?)
+    func update(respondableConfig: QuickRespondableConfig?)
 }
 
 extension QuickRespondableTableViewCellProtocol {
     
-    public func update(QuickRespondableConfig: QuickRespondableConfig?) { }
+    public func update(respondableConfig: QuickRespondableConfig?) { }
 }
