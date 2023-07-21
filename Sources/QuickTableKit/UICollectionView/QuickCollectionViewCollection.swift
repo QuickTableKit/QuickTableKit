@@ -54,7 +54,7 @@ public final class QuickCollectionViewCollection {
     }
     
     public func add(items: [QuickCollectionViewCellModelProtocol], to index: Int? = nil, atSection sectionIndex: Int? = nil) {
-        let sectionIndex = sectionIndex ?? sections.count
+        let sectionIndex = sectionIndex ?? max(sections.count - 1, 0)
         guard sections.count >= sectionIndex else {
             fatalError("Section with index = \(sectionIndex) not exist.")
         }
