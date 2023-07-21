@@ -9,7 +9,7 @@ open class QuickExtendTableViewController: UIViewController {
     public lazy var collection = QuickTableViewCollection()
     public lazy var tableViewDataSource = QuickTableViewDataSource(collection: collection)
     
-    private lazy var tableView: UITableView = {
+    public lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
