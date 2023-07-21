@@ -8,7 +8,7 @@ public struct StringIdentifiable: IdentifiableEntity {
     
     public var id: String
     
-    init(_ id: String) {
+    public init(_ id: String) {
         self.id = id
     }
 }
