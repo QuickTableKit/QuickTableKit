@@ -15,9 +15,26 @@ open class QuickExtendTableViewController: UIViewController {
         UIColor.secondarySystemBackground
     }
     
+    open var isRefreshIndicationEnable: Bool = false {
+        didSet {
+            if isRefreshIndicationEnable && refreshControl == nil {
+                refreshControl = makeRefreshControl()
+            } else if refreshControl != nil && !isRefreshIndicationEnable {
+                refreshControl?.removeFromSuperview()
+                refreshControl = nil
+            }
+        }
+    }
+    
     public var canCloseViewController: Bool = true {
         didSet {
             navigationItem.hidesBackButton = !canCloseViewController
+        }
+    }
+    
+    public var refreshControl: UIRefreshControl? {
+        didSet {
+            tableView.refreshControl = refreshControl
         }
     }
     
@@ -26,6 +43,10 @@ open class QuickExtendTableViewController: UIViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         
         super.init(nibName: nil, bundle: nil)
+    }
+    
+    convenience init() {
+        self.init(style: .insetGrouped)
     }
     
     required public init?(coder: NSCoder) {
