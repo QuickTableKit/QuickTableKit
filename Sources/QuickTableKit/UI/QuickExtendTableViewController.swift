@@ -9,11 +9,7 @@ open class QuickExtendTableViewController: UIViewController {
     public lazy var collection = QuickTableViewCollection()
     public lazy var tableViewDataSource = QuickTableViewDataSource(collection: collection)
     
-    public lazy var tableView: UITableView = {
-        let tableView = UITableView()
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        return tableView
-    }()
+    public var tableView: UITableView
     
     open var contentBackgroundColor: UIColor {
         UIColor.secondarySystemBackground
@@ -23,6 +19,17 @@ open class QuickExtendTableViewController: UIViewController {
         didSet {
             navigationItem.hidesBackButton = !canCloseViewController
         }
+    }
+    
+    public init(style: UITableView.Style) {
+        tableView = UITableView(frame: .zero, style: style)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required public init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     open override func viewDidLoad() {
