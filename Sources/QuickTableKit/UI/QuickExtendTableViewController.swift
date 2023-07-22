@@ -45,7 +45,7 @@ open class QuickExtendTableViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
     }
     
-    convenience init() {
+    public convenience init() {
         self.init(style: .insetGrouped)
     }
     
