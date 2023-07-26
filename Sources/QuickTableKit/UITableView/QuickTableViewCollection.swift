@@ -266,3 +266,30 @@ extension QuickTableViewCollection {
         return nil
     }
 }
+
+extension QuickTableViewCollection {
+    
+    public func disableCells(in tableView: UITableView) {
+        setEnableCells(isEnabled: false, tableView)
+    }
+    
+    public func enableCells(in tableView: UITableView) {
+        setEnableCells(isEnabled: true, tableView)
+    }
+    
+    private func setEnableCells(isEnabled: Bool, _ tableView: UITableView) {
+        for (sectionIndex, section) in sections.enumerated() {
+            for (itemIndex, item) in section.items.enumerated() {
+                guard let cellModel = item as? EnableTableViewCellModelProtocol else {
+                    continue
+                }
+                cellModel.isEnabled = true
+                
+                let cellIndexPath = IndexPath(item: itemIndex, section: sectionIndex)
+                if let cell = tableView.cellForRow(at: cellIndexPath) as? EnableTableViewCellProtocol {
+                    cell.set(isEnabled: isEnabled)
+                }
+            }
+        }
+    }
+}
