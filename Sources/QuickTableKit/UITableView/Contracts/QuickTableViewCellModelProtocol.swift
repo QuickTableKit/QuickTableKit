@@ -6,7 +6,7 @@ import UIKit
 
 public protocol QuickTableViewCellModelProtocol: AnyObject {
     
-    static var type: QuickTableViewCellProtocol.Type { get }
+    var type: QuickTableViewCellProtocol.Type { get }
     
     var id: Int? { get set }
     

@@ -140,7 +140,7 @@ extension QuickTableViewCollection {
             return nil
         }
         
-        return type(of: item).type
+        return item.type
     }
     
     public func cellId<CellId: RawRepresentable>(at indexPath: IndexPath) -> CellId? where CellId.RawValue == Int {
@@ -181,7 +181,7 @@ extension QuickTableViewCollection {
             return nil
         }
         
-        return type(of: model).type
+        return model.type
     }
     
     public func footerType(at section: Int) -> QuickTableViewHeaderFooterViewProtocol.Type? {
@@ -189,7 +189,7 @@ extension QuickTableViewCollection {
             return nil
         }
         
-        return type(of: model).type
+        return model.type
     }
     
     public func header(at section: Int) -> QuickTableViewHeaderFooterModelProtocol? {

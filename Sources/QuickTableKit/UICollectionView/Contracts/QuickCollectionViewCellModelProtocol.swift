@@ -6,7 +6,7 @@ import Foundation
 
 public protocol QuickCollectionViewCellModelProtocol: AnyObject {
     
-    static var type: QuickCollectionViewCellProtocol.Type { get }
+    var type: QuickCollectionViewCellProtocol.Type { get }
     
     var id: Int? { get set }
     

@@ -6,5 +6,5 @@ import UIKit
 
 public protocol QuickTableViewHeaderFooterModelProtocol: AnyObject {
     
-    static var type: QuickTableViewHeaderFooterViewProtocol.Type { get }
+    var type: QuickTableViewHeaderFooterViewProtocol.Type { get }
 }

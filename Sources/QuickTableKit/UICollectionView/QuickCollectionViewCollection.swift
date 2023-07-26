@@ -156,7 +156,7 @@ extension QuickCollectionViewCollection {
             return nil
         }
         
-        return type(of: item).type
+        return item.type
     }
     
     public func cellId<CellId: RawRepresentable>(at indexPath: IndexPath) -> CellId? where CellId.RawValue == Int {
