@@ -283,7 +283,7 @@ extension QuickTableViewCollection {
                 guard let cellModel = item as? EnableTableViewCellModelProtocol else {
                     continue
                 }
-                cellModel.isEnabled = true
+                cellModel.isEnabled = isEnabled
                 
                 let cellIndexPath = IndexPath(item: itemIndex, section: sectionIndex)
                 if let cell = tableView.cellForRow(at: cellIndexPath) as? EnableTableViewCellProtocol {
