@@ -147,8 +147,8 @@ extension QuickCollectionViewCollection {
         return sections.count
     }
     
-    public func numberOfItems(in section: Int) -> Int {
-        return sections[safe: section]?.items.count ?? 0
+    public func numberOfItems(in section: Int) -> Int? {
+        return sections[safe: section]?.items.count
     }
     
     public func cellType(at indexPath: IndexPath) -> QuickCollectionViewCellProtocol.Type? {
