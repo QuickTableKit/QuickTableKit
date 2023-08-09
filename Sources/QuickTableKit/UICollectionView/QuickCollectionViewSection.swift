@@ -30,7 +30,7 @@ public final class QuickCollectionViewSection {
         items.firstIndex(where: { $0.id == cellId.rawValue })
     }
     
-    internal func index(withEntityId id: String) -> Int? {
+    internal func index(itemWithId id: String) -> Int? {
         return indexes[id]
     }
     

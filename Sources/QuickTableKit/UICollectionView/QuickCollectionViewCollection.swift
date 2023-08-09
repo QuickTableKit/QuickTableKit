@@ -125,7 +125,7 @@ public final class QuickCollectionViewCollection {
             fatalError("Section with index = \(sectionIndex) not exist.")
         }
         
-        guard let itemIndex = section.index(withEntityId: id) else {
+        guard let itemIndex = section.index(itemWithId: id) else {
             return
         }
         
@@ -198,5 +198,24 @@ extension QuickCollectionViewCollection {
         }
         
         return CellId(rawValue: identifierValue)
+    }
+}
+
+extension QuickCollectionViewCollection {
+    
+    public func index(sectionWithId id: String) -> Int? {
+        indexes[id]
+    }
+    
+    public func index(cellWithId id: String) -> IndexPath? {
+        for (sectionIndex, section) in sections.enumerated() {
+            guard let itemIndex = section.index(itemWithId: id) else {
+                continue
+            }
+            
+            return IndexPath(item: itemIndex, section: sectionIndex)
+        }
+        
+        return nil
     }
 }
