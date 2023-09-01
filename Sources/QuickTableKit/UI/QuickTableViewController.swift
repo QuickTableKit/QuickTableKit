@@ -13,23 +13,6 @@ open class QuickTableViewController: UITableViewController {
         UIColor.secondarySystemBackground
     }
     
-    open var isRefreshIndicationEnable: Bool = false {
-        didSet {
-            if isRefreshIndicationEnable && refreshControl == nil {
-                refreshControl = makeRefreshControl()
-            } else if refreshControl != nil && !isRefreshIndicationEnable {
-                refreshControl?.removeFromSuperview()
-                refreshControl = nil
-            }
-        }
-    }
-    
-    public var canCloseViewController: Bool = true {
-        didSet {
-            navigationItem.hidesBackButton = !canCloseViewController
-        }
-    }
-    
     public convenience init() {
         self.init(style: .insetGrouped)
     }
@@ -62,10 +45,6 @@ open class QuickTableViewController: UITableViewController {
         
     }
     
-    open func didTapRefresh() {
-        
-    }
-    
     // swiftlint:disable line_length
     public func reloadTableRowIfPossible<SectionId: RawRepresentable, CellId: RawRepresentable>(sectionId: SectionId, cellId: CellId) where SectionId.RawValue == Int, CellId.RawValue == Int {
         guard let cellIndex = collection.index(cellWithSectionType: sectionId, andCellType: cellId),
@@ -92,13 +71,5 @@ open class QuickTableViewController: UITableViewController {
         }
         
         tableView.insertSections([sectionIndex], with: .fade)
-    }
-    
-    private func makeRefreshControl() -> UIRefreshControl {
-        let refreshControl = UIRefreshControl()
-        refreshControl.addAction(for: .valueChanged) { [unowned self] in
-            self.didTapRefresh()
-        }
-        return refreshControl
     }
 }
