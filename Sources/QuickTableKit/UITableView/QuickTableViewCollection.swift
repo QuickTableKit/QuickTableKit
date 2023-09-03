@@ -67,6 +67,20 @@ public final class QuickTableViewCollection {
         sections[insertIndex].add(items: items)
     }
     
+    public func append(item: QuickTableViewCellModelProtocol, toSection index: Int? = nil) {
+        append(items: [item], toSection: index)
+    }
+    
+    public func append(items: [QuickTableViewCellModelProtocol], toSection index: Int? = nil) {
+        let insertIndex = min(max(index ?? sections.count, 0), sections.count)
+        
+        if sections.count == insertIndex {
+            sections.append(QuickTableViewSection(items: items))
+        } else {
+            sections[insertIndex].add(items: items)
+        }
+    }
+    
     // MARK: Update
     
     public func update(with sections: [QuickTableViewSection]) {
