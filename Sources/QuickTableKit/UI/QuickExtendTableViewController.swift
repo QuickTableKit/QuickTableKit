@@ -38,11 +38,15 @@ open class QuickExtendTableViewController: UIViewController {
         }
     }
     
-    public init(style: UITableView.Style) {
-        tableView = UITableView(frame: .zero, style: style)
+    public init(tableView: UITableView) {
+        self.tableView = tableView
         tableView.translatesAutoresizingMaskIntoConstraints = false
         
         super.init(nibName: nil, bundle: nil)
+    }
+    
+    public convenience init(style: UITableView.Style) {
+        self.init(tableView: UITableView(frame: .zero, style: style))
     }
     
     public convenience init() {
