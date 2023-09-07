@@ -279,6 +279,18 @@ extension QuickTableViewCollection {
         
         return nil
     }
+    
+    public func index<CellId: RawRepresentable>(cellWithId cellId: CellId) -> IndexPath? where CellId.RawValue == Int {
+        for (index, section) in sections.enumerated() {
+            guard let itemIndex = section.index(cellWithId: cellId) else {
+                continue
+            }
+            
+            return IndexPath(item: itemIndex, section: index)
+        }
+        
+        return nil
+    }
 }
 
 extension QuickTableViewCollection {
