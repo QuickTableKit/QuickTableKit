@@ -36,7 +36,7 @@ open class QuickTableViewController: UITableViewController {
         }
         
         tableView.keyboardDismissMode = .interactiveWithAccessory
-        tableView.dataSource = tableViewDataSource
+        tableView.dataSource = self
         tableView.delegate = self
         tableView.backgroundColor = contentBackgroundColor
     }
@@ -71,5 +71,20 @@ open class QuickTableViewController: UITableViewController {
         }
         
         tableView.insertSections([sectionIndex], with: .fade)
+    }
+}
+
+extension QuickTableViewController {
+    
+    public override func numberOfSections(in tableView: UITableView) -> Int {
+        return tableViewDataSource.numberOfSections(in: tableView)
+    }
+    
+    public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return tableViewDataSource.tableView(tableView, numberOfRowsInSection: section)
+    }
+    
+    public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return tableViewDataSource.tableView(tableView, cellForRowAt: indexPath)
     }
 }
