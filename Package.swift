@@ -3,19 +3,19 @@
 import PackageDescription
 
 let package = Package(
-    name: "QuickTableKit",
+    name: "QuickToolKit",
     platforms: [
         .iOS(.v13),
     ],
     products: [
         .library(
-            name: "QuickTableKit",
-            targets: ["QuickTableKit"]),
+            name: "QuickToolKit",
+            targets: ["QuickToolKit"]),
     ],
     dependencies: [],
     targets: [
         .target(
-            name: "QuickTableKit",
+            name: "QuickToolKit",
             dependencies: []
         ),
     ]
