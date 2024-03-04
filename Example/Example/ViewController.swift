@@ -38,7 +38,7 @@ class ViewController: QuickTableViewController {
     }
 }
 
-struct ExmapleEntity: Identifiable {
+struct ExmapleEntity: QuickIdentifiable {
     
     var id: String
 }

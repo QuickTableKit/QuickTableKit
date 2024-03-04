@@ -9,10 +9,10 @@ public final class EmptyTableViewCellModel: QuickTableViewCellModelProtocol {
     
     public var id: Int?
     
-    public var entity: StringIdentifiable?
+    public var entity: (any QuickIdentifiable)?
     
     public init(id: Int? = nil,
-                entity: StringIdentifiable? = nil) {
+                entity: (any QuickIdentifiable)? = nil) {
         self.id = id
         self.entity = entity
     }

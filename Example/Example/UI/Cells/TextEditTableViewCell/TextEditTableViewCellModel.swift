@@ -9,12 +9,12 @@ public final class TextEditTableViewCellModel: QuickTableViewCellModelProtocol {
     
     public var id: Int?
     
-    public var entity: StringIdentifiable?
+    public var entity: (any QuickIdentifiable)?
     
     public var titleText: String?
     
     public init(id: Int? = nil,
-                entity: StringIdentifiable? = nil,
+                entity: (any QuickIdentifiable)? = nil,
                 titleText: String? = nil) {
         self.id = id
         self.entity = entity

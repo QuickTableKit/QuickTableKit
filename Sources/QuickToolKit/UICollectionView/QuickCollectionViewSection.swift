@@ -6,12 +6,10 @@ import UIKit
 
 public final class QuickCollectionViewSection {
     
-    public typealias StringIdentifiable = any Identifiable<String>
-    
     private var indexes: [String: Int] = [:]
     
     public private(set) var id: Int?
-    public private(set) var entity: StringIdentifiable?
+    public private(set) var entity: (any QuickIdentifiable)?
     public internal(set) var items: [QuickCollectionViewCellModelProtocol] {
         didSet {
             recalculateIndexes()
@@ -19,7 +17,7 @@ public final class QuickCollectionViewSection {
     }
     
     public init(id: Int? = nil,
-                entity: StringIdentifiable? = nil,
+                entity: (any QuickIdentifiable)? = nil,
                 items: [QuickCollectionViewCellModelProtocol] = []) {
         self.id = id
         self.entity = entity

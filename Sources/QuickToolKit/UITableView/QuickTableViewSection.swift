@@ -6,12 +6,10 @@ import UIKit
 
 public final class QuickTableViewSection {
     
-    public typealias StringIdentifiable = any Identifiable<String>
-    
     private var indexes: [String: Int] = [:]
     
     public private(set) var id: Int?
-    public private(set) var entity: StringIdentifiable?
+    public private(set) var entity: (any QuickIdentifiable)?
     public var header: QuickTableViewHeaderFooterModelProtocol?
     public var footer: QuickTableViewHeaderFooterModelProtocol?
     public private(set) var items: [QuickTableViewCellModelProtocol] {
@@ -21,7 +19,7 @@ public final class QuickTableViewSection {
     }
     
     public init(id: Int? = nil,
-                entity: StringIdentifiable? = nil,
+                entity: (any QuickIdentifiable)? = nil,
                 header: QuickTableViewHeaderFooterModelProtocol? = nil,
                 footer: QuickTableViewHeaderFooterModelProtocol? = nil,
                 items: [QuickTableViewCellModelProtocol] = []) {
